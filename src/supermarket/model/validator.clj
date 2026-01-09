@@ -8,9 +8,13 @@
    :errors errors})
 
 (defn- ->humanized-schema-errors [schema data]
-  (me/humanize (m/explain schema data)))
+  (if-let [errors (me/humanize (m/explain schema data))]
+    (-> errors
+        vals
+        flatten)
+    []))
 
 (defn schema-validate [schema data]
-  (let [errors (or (->humanized-schema-errors schema data) [])
+  (let [errors (->humanized-schema-errors schema data)
         status (if (seq errors) :error :ok)]
     (->return-message status data errors)))
