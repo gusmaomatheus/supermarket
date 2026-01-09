@@ -5,4 +5,4 @@
    [:document :string]
    [:status [:enum "ACTIVATED" "DISABLED"]]
    [:type [:enum "COMMON" "SPECIAL"]]
-   [:registrationDate :string]])
+   [:registration-date :string]])
