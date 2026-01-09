@@ -12,4 +12,4 @@
   (format "E002: The '%s' field must be of type '%s'." (name field) (name type)))
 
 (defn ->invalid-value-error [field custom-message]
-  (format "E003: The '%s' field must be %s." field custom-message))
+  (format "E003: The '%s' field must be %s." (name field)  custom-message))
