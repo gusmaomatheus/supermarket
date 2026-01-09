@@ -1,0 +1,35 @@
+name: Clojure tests
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Set up a specific java version
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    # Use cache for project dependencies
+    - uses: actions/cache@v4
+    - name: Cache local Maven repository
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-lein-${{ hashFiles('**/project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-lein-
+
+    # If can't find the dependencies in the cache, install them.
+    - name: Install dependencies
+      run: lein deps
+
+    # Run all application tests
+    - name: Run tests
+      run: lein test
