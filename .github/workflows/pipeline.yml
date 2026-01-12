@@ -9,17 +9,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Set up a specific java version
       - uses: actions/checkout@v4
-
+      
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      # Use cache for project dependencies
-      # FIX: Combined 'name', 'uses', and 'with' into a single step block
+      - name: Setup Clojure
+        uses: DeLaGuardo/setup-clojure@v13.4
+        with:
+          lein: 'latest'
+
       - name: Cache local Maven repository
         uses: actions/cache@v4
         with:
@@ -28,10 +30,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-lein-
 
-      # If can't find the dependencies in the cache, install them.
       - name: Install dependencies
         run: lein deps
 
-      # Run all application tests
       - name: Run tests
         run: lein test
