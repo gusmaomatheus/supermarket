@@ -14,4 +14,4 @@
            {:error/message (e/->invalid-value-error :status "COMMON or SPECIAL")}
            "COMMON" "SPECIAL"]]
    [:registration-date [:string
-                        {:error/message (e/->invalid-type-error :document :string)}]]])
+                        {:error/message (e/->invalid-type-error :registration-date :string)}]]])
