@@ -9,9 +9,10 @@
 
 (defn- ->humanized-schema-errors [schema data]
   (if-let [errors (me/humanize (m/explain schema data))]
-    (-> errors
-        vals
-        flatten)
+    (->> errors
+         vals
+         flatten
+         sort)
     []))
 
 (defn schema-validate [schema data]
