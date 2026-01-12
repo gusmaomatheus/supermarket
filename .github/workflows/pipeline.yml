@@ -18,7 +18,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@v13
+        uses: DeLaGuardo/setup-clojure@13.4
         with:
           lein: 'latest'
 
