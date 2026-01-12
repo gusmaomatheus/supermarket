@@ -28,7 +28,7 @@
     (let [expected {:status :error
                     :data invalid-customer
                     :errors ["E002: The 'document' field must be of type 'string'."
-                             "E002: The 'document' field must be of type 'string'."
+                             "E002: The 'registration-date' field must be of type 'string'."
                              "E003: The 'status' field must be ACTIVATED or DISABLED."
                              "E003: The 'status' field must be COMMON or SPECIAL."]}
           output (schema-validate schema/CustomerSchema invalid-customer)]
