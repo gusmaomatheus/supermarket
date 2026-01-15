@@ -1,14 +1,7 @@
 (ns supermarket.utils.json-test
   (:require [clojure.test :refer [deftest is testing]]
-            [supermarket.utils.json :refer [edn->json json->edn]])
-  (:import [java.io ByteArrayInputStream InputStream]))
-
-;; helpers
-
-(defn- str->stream
-  "Creates an InputStream from a String to simulate the Ring's body."
-  [string]
-  (ByteArrayInputStream. (.getBytes string "UTF-8")))
+            [supermarket.utils.json :refer [edn->json json->edn]]
+            [supermarket.util :refer [str->stream]]))
 
 ;; tests
 
