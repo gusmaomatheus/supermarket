@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.12.2"]
                  [metosin/jsonista "0.3.13"]
                  [metosin/malli "0.20.0"]
+                 [metosin/reitit "0.10.0"]
                  [ring/ring-jetty-adapter "1.15.3"]]
   :main ^:skip-aot supermarket.core
   :target-path "target/%s"
